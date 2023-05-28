@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <div className={cx("wrapper")}>
       <div className="footer-content">
-        <span>@thecp2023VNVD</span>
+        
       </div>
     </div>
   )

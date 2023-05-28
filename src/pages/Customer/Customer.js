@@ -8,7 +8,7 @@ export default function Customer() {
 
   return (
     <div className={cx("wrapper")}>
-      
+      <span>gyguydg</span>
     </div>
   )
 }

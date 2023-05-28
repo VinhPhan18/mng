@@ -56,42 +56,45 @@ export default function Header() {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("logo")}>
-        <img src={logo} alt="Logo" className={cx("logo-image")} />
+      <Link to="/" className={cx("menu-link")}>
+      <img src={logo} alt="Logo" className={cx("logo-image")} />
+      </Link>
+         
       </div>
       <div className={cx("menu")}>
         <ul className={cx("menu-list")}>
           <li className={cx("menu-item")}>
-            <Link to="/manage-transactions" className={cx("menu-link")}>
+            <Link to="/Transaction" className={cx("menu-link")}>
               Giao dịch
             </Link>
           </li>
           <li className={cx("menu-item")}>
-            <Link to="/manage-employees" className={cx("menu-link")}>
+            <Link to="/Staff" className={cx("menu-link")}>
               Nhân viên
             </Link>
           </li>
           <li className={cx("menu-item")}>
-            <Link to="/manage-customers" className={cx("menu-link")}>
+            <Link to="/Customer" className={cx("menu-link")}>
               Khách hàng
             </Link>
           </li>
           <li className={cx("menu-item")}>
-            <Link to="/manage-orders" className={cx("menu-link")}>
+            <Link to="/Order" className={cx("menu-link")}>
               Đơn hàng
             </Link>
           </li>
           <li className={cx("menu-item")}>
-            <Link to="/manage-contracts" className={cx("menu-link")}>
+            <Link to="/Contract" className={cx("menu-link")}>
                Hợp đồng
             </Link>
           </li>
           <li className={cx("menu-item")}>
-            <Link to="/manage-products" className={cx("menu-link")}>
+            <Link to="/Commodities" className={cx("menu-link")}>
               Hàng hóa
             </Link>
           </li>
           <li className={cx("menu-item")}>
-            <Link to="/customer-support" className={cx("menu-link")}>
+            <Link to="/Contact" className={cx("menu-link")}>
               Hỗ trợ 
             </Link>
           </li>

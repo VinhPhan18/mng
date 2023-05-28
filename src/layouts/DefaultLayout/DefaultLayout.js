@@ -7,7 +7,7 @@ import Footer from "~/layouts/components/Footer/Footer";
 function DefaultLayout({ children }) {
   const cx = classNames.bind(style);
   return (
-    <div>
+    <div  className={cx("layouthome")}>
       <Header />
       <Footer />
       <div className={cx("wrapper")}>
