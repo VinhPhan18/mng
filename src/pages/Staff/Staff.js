@@ -41,25 +41,20 @@ export default function Staff() {
     if (isValid) {
       const newStaff = {
         id: generateRandomId(),
-        name: document.getElementById('ho_ten').value,
-        phone: document.getElementById('sdt_nv').value,
-        email: document.getElementById('email').value,
-        birthday: document.getElementById('ngaysinh').value,
-        address: document.getElementById('diachi').value,
-        startDate: document.getElementById('ngayvaolam').value,
-        idCard: document.getElementById('cccd').value,
+        name: e.target.ho_ten.value,
+        phone: e.target.sdt_nv.value,
+        email: e.target.email.value,
+        address: e.target.diachi.value,
+        startDate: e.target.ngayvaolam.value,
+        birthday: e.target.ngaysinh.value,
+        tenchucvu: e.target.tenchucvu.value,
+        idCard: e.target.cccd.value,
       };
 
       setStaffList([...staffList, newStaff]);
 
-      document.getElementById('ho_ten').value = '';
-      document.getElementById('sdt_nv').value = '';
+      e.target.reset();
       setEmail('');
-      document.getElementById('ngaysinh').value = '';
-      document.getElementById('diachi').value = '';
-      document.getElementById('ngayvaolam').value = '';
-      document.getElementById('cccd').value = '';
-
       toggleModal();
     } else {
       console.log('Email không đúng định dạng');
@@ -76,13 +71,14 @@ export default function Staff() {
     if (isValid) {
       const updatedStaff = {
         id: editingStaff.id,
-        name: document.getElementById('ho_ten').value || editingStaff.name,
-        phone: document.getElementById('sdt_nv').value || editingStaff.phone,
-        email: document.getElementById('email').value || editingStaff.email,
-        birthday: document.getElementById('ngaysinh').value || editingStaff.birthday,
-        address: document.getElementById('diachi').value || editingStaff.address,
-        startDate: document.getElementById('ngayvaolam').value || editingStaff.startDate,
-        idCard: document.getElementById('cccd').value || editingStaff.idCard,
+        name: e.target.ho_ten.value || editingStaff.name,
+        phone: e.target.sdt_nv.value || editingStaff.phone,
+        email: e.target.email.value || editingStaff.email,
+        address: e.target.diachi.value || editingStaff.address,
+        tenchucvu: e.target.tenchucvu.value || editingStaff.tenchucvu,
+        birthday: e.target.ngaysinh.value || editingStaff.birthday,
+        startDate: e.target.ngayvaolam.value || editingStaff.startDate,
+        idCard: e.target.cccd.value || editingStaff.idCard,
       };
 
       const updatedStaffList = staffList.map((staff) => {
@@ -94,14 +90,8 @@ export default function Staff() {
 
       setStaffList(updatedStaffList);
 
-      document.getElementById('ho_ten').value = '';
-      document.getElementById('sdt_nv').value = '';
+      e.target.reset();
       setEmail('');
-      document.getElementById('ngaysinh').value = '';
-      document.getElementById('diachi').value = '';
-      document.getElementById('ngayvaolam').value = '';
-      document.getElementById('cccd').value = '';
-
       toggleModal();
     } else {
       console.log('Email không đúng định dạng');
@@ -138,22 +128,24 @@ export default function Staff() {
               <th>Tên nhân viên</th>
               <th>Email</th>
               <th>SDT</th>
-              <th>Ngày sinh</th>
               <th>Địa chỉ</th>
+              <th>Chức vụ</th>
+              <th>Ngày sinh</th>
               <th>Ngày vào làm</th>
               <th>Căn cước công dân</th>
               <th>Thao tác</th>
             </tr>
           </thead>
           <tbody>
-            {staffList.map((staff, index) => (
-              <tr key={index}>
+            {staffList.map((staff) => (
+              <tr key={staff.id}>
                 <td>{staff.id}</td>
                 <td>{staff.name}</td>
                 <td>{staff.email}</td>
                 <td>{staff.phone}</td>
-                <td>{staff.birthday}</td>
                 <td>{staff.address}</td>
+                <td>{staff.tenchucvu}</td>
+                <td>{staff.birthday}</td>
                 <td>{staff.startDate}</td>
                 <td>{staff.idCard}</td>
                 <td>
@@ -210,12 +202,14 @@ export default function Staff() {
                 />
               </div>
               <div className={cx('formGroup')}>
-                <label htmlFor="ngaysinh">Ngày sinh:</label>
+                <label htmlFor="cccd">Căn cước công dân:</label>
                 <input
-                  placeholder="Nhập ngày sinh..."
-                  type="date"
-                  id="ngaysinh"
-                  defaultValue={editingStaff ? editingStaff.birthday : ''}
+                  placeholder="Nhập căn cước công dân..."
+                  type="tel"
+                  maxLength={12}
+                  id="cccd"
+                  onKeyPress={handlePhoneNumberInput}
+                  defaultValue={editingStaff ? editingStaff.idCard : ''}
                   required
                 />
               </div>
@@ -240,12 +234,22 @@ export default function Staff() {
                 />
               </div>
               <div className={cx('formGroup')}>
-                <label htmlFor="cccd">Căn cước công dân:</label>
+                <label htmlFor="tenchucvu">Chức vụ:</label>
                 <input
-                  placeholder="nhập căn cước công dân..."
+                  placeholder="Nhập tên chức vụ..."
                   type="text"
-                  id="cccd"
-                  defaultValue={editingStaff ? editingStaff.idCard : ''}
+                  id="tenchucvu"
+                  defaultValue={editingStaff ? editingStaff.tenchucvu : ''}
+                  required
+                />
+              </div>
+              <div className={cx('formGroup')}>
+                <label htmlFor="ngaysinh">Ngày sinh:</label>
+                <input
+                  placeholder="Nhập ngày sinh..."
+                  type="date"
+                  id="ngaysinh"
+                  defaultValue={editingStaff ? editingStaff.birthday : ''}
                   required
                 />
               </div>

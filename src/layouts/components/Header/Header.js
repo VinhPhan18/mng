@@ -100,31 +100,28 @@ export default function Header() {
           </li>
         </ul>
       </div>
-      <div className={cx("notification-icon")}>
-        <Link to="/notifications" className={cx("notification-link")}>
-          <FiBell />
-        </Link>
-      </div>
+      
       <Stack direction="row" spacing={2}>
-        
         <div>
-          <Button
+            <Button
             ref={anchorRef}
             id="composition-button"
             aria-controls={open ? 'composition-menu' : undefined}
             aria-expanded={open ? 'true' : undefined}
             aria-haspopup="true"
             onClick={handleToggle}
-            color="primary"  
-            size="large"    
-            sx={{ fontSize: '15px',
-            marginTop: '5px',
-            color: 'white',
-            marginLeft: '20px', 
-             }} 
+            color="primary"
+            size="large"
+            sx={{
+              fontSize: '12px', // Thay đổi kích thước font
+              marginTop: '8px',
+              color: 'white',
+              marginLeft: '80px',
+            }}
           >
             Tài khoản
           </Button>
+
           <Popper
             open={open}
             anchorEl={anchorRef.current}
@@ -149,9 +146,9 @@ export default function Header() {
                       aria-labelledby="composition-button"
                       onKeyDown={handleListKeyDown}
                     >
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
-                      <MenuItem onClick={handleClose}>My account</MenuItem>
-                      <MenuItem onClick={handleClose}>Logout</MenuItem>
+                      <MenuItem onClick={handleClose}>Thông tin cá nhân</MenuItem>
+                      <MenuItem onClick={handleClose}>Cài đặt</MenuItem>
+                      <MenuItem onClick={handleClose}>Đăng xuất</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
